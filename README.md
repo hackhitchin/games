@@ -25,5 +25,8 @@ Score:
 
 The game gets progressively faster every 20 points
 
+Prerequisite python modules (pip3 install ...):
+* pygame
+* numpy
 
 Uses font from https://www.1001fonts.com/digital-7-font.html
