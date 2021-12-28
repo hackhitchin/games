@@ -3,6 +3,8 @@
 import sys, pygame, numpy, random, time
 from joystick import Joystick
 
+dirname = getattr(sys, "_MEIPASS", ".")
+
 pygame.init()
 
 size = (width, height) = (240,64)
@@ -14,6 +16,7 @@ BOARDY=10
 BASEX=96    # Horizontal start position of board
 
 screen = pygame.display.set_mode(size, pygame.SCALED)
+pygame.display.set_caption("Slide")
 
 # Repeat keydown events every 200ms - for block movement
 pygame.key.set_repeat(200)
@@ -21,15 +24,15 @@ pygame.key.set_repeat(200)
 # Custom event for running the game
 ANIMATE=pygame.event.custom_type()
 
-# Fonts
+# Fonts:
 # "Score" and "Lines"
 scoreword_f = pygame.font.Font(None, 16)
 # The score and lines counts
-scoretext_f = pygame.font.Font("digital-7.monoitalic.ttf",28)
+scoretext_f = pygame.font.Font(dirname+"/digital-7.monoitalic.ttf",28)
 # "High score"
 highword_f = pygame.font.Font(None, 14)
 # High score
-hightext_f = pygame.font.Font("digital-7.monoitalic.ttf",20)
+hightext_f = pygame.font.Font(dirname+"/digital-7.monoitalic.ttf",20)
 
 # "Game over!"
 gameover_f = pygame.font.Font(None, 32)   # Default pygame font
@@ -497,7 +500,7 @@ for slidein in range(BOARDX,-1,-1):
 
 today = time.localtime()
 if today.tm_mon == 12 and 10 < today.tm_mday < 31:
-    hat = pygame.image.load("smallhat.png")
+    hat = pygame.image.load(dirname+"/smallhat.png")
     screen.blit(hat, (142,1))
 
 pygame.display.flip()
